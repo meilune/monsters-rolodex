@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -8,41 +8,39 @@ class App extends Component {
     super();
 
     this.state = {
-      name: {firstName: 'Virginija', lastName: 'Meilune'},
-      company: "Rowland"
+      monsters: [
+        {
+          name: 'Linda',
+          id: '142674he'
+        },
+        {
+          name: 'Peter',
+          id: '142674le'
+        },
+        {
+          name: 'Summer',
+          id: '142674hp'
+        },
+        {
+          name: 'Harry',
+          id: '142674lp'
+        }
+      ]
     }
   }
 
   render (){
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Hi, I am {this.state.name.firstName} {this.state.name.lastName}. I work at {this.state.company}.
-          </p>
-          <button 
-            onClick={() => {
-              this.setState(
-                () => {
-                  return { 
-                    name: {
-                      firstName: 'Sigita', 
-                      lastName: 'Hunter'
-                    },
-                    company: 'Home'
-                  };
-                },
-                //This function will only run this callback function when all the states have been updated:
-                () => {
-                  console.log(this.state);
-                }
-                );
-            }}
-          >
-            Change Name
-          </button>
-        </header>
+        {
+          this.state.monsters.map((monster) => {
+            return (
+              <div key={monster.id}>
+                <h1>{monster.name}</h1>
+              </div> 
+            )
+          })
+        }
       </div>
     );
   }
